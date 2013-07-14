@@ -208,15 +208,45 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App\main.js" />
+    <Content Include="App\main.min.js">
+      <DependentUpon>main.js</DependentUpon>
+    </Content>
     <Content Include="App\models\changePasswordModel.js" />
+    <Content Include="App\models\changePasswordModel.min.js">
+      <DependentUpon>changePasswordModel.js</DependentUpon>
+    </Content>
     <Content Include="App\services\dataservice.js" />
+    <Content Include="App\services\dataservice.min.js">
+      <DependentUpon>dataservice.js</DependentUpon>
+    </Content>
     <Content Include="App\services\global.js" />
+    <Content Include="App\services\global.min.js">
+      <DependentUpon>global.js</DependentUpon>
+    </Content>
     <Content Include="App\services\logger.js" />
+    <Content Include="App\services\logger.min.js">
+      <DependentUpon>logger.js</DependentUpon>
+    </Content>
     <Content Include="App\viewmodels\changepassword.js" />
+    <Content Include="App\viewmodels\changepassword.min.js">
+      <DependentUpon>changepassword.js</DependentUpon>
+    </Content>
     <Content Include="App\viewmodels\flickr.js" />
+    <Content Include="App\viewmodels\flickr.min.js">
+      <DependentUpon>flickr.js</DependentUpon>
+    </Content>
     <Content Include="App\viewmodels\logoff.js" />
+    <Content Include="App\viewmodels\logoff.min.js">
+      <DependentUpon>logoff.js</DependentUpon>
+    </Content>
     <Content Include="App\viewmodels\shell.js" />
+    <Content Include="App\viewmodels\shell.min.js">
+      <DependentUpon>shell.js</DependentUpon>
+    </Content>
     <Content Include="App\viewmodels\welcome.js" />
+    <Content Include="App\viewmodels\welcome.min.js">
+      <DependentUpon>welcome.js</DependentUpon>
+    </Content>
     <Content Include="App\views\changepassword.html" />
     <Content Include="App\views\detail.html" />
     <Content Include="App\views\flickr.html" />
@@ -312,6 +342,36 @@
     <Content Include="Content\font\fontawesome-webfont.eot" />
     <Content Include="Content\font\FontAwesome.otf" />
     <Content Include="readme.md" />
+    <Content Include="App\main.min.js.map">
+      <DependentUpon>main.js</DependentUpon>
+    </Content>
+    <Content Include="App\models\changePasswordModel.min.js.map">
+      <DependentUpon>changePasswordModel.js</DependentUpon>
+    </Content>
+    <Content Include="App\services\dataservice.min.js.map">
+      <DependentUpon>dataservice.js</DependentUpon>
+    </Content>
+    <Content Include="App\services\global.min.js.map">
+      <DependentUpon>global.js</DependentUpon>
+    </Content>
+    <Content Include="App\services\logger.min.js.map">
+      <DependentUpon>logger.js</DependentUpon>
+    </Content>
+    <Content Include="App\viewmodels\changepassword.min.js.map">
+      <DependentUpon>changepassword.js</DependentUpon>
+    </Content>
+    <Content Include="App\viewmodels\flickr.min.js.map">
+      <DependentUpon>flickr.js</DependentUpon>
+    </Content>
+    <Content Include="App\viewmodels\logoff.min.js.map">
+      <DependentUpon>logoff.js</DependentUpon>
+    </Content>
+    <Content Include="App\viewmodels\shell.min.js.map">
+      <DependentUpon>shell.js</DependentUpon>
+    </Content>
+    <Content Include="App\viewmodels\welcome.min.js.map">
+      <DependentUpon>welcome.js</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-2.0.2.intellisense.js" />
     <Content Include="Scripts\almond-custom.js" />
     <Content Include="Scripts\bootstrap.js" />
