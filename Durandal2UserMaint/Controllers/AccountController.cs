@@ -48,13 +48,13 @@ namespace Durandal2UserMaint.Controllers
         //
         // POST: /Account/LogOff
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        [AcceptVerbs(HttpVerbs.Get | HttpVerbs.Post)]
+        //[ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
             WebSecurity.Logout();
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "durandal");
         }
 
         //
@@ -81,7 +81,7 @@ namespace Durandal2UserMaint.Controllers
                 {
                     WebSecurity.CreateUserAndAccount(model.UserName, model.Password);
                     WebSecurity.Login(model.UserName, model.Password);
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "durandal");
                 }
                 catch (MembershipCreateUserException e)
                 {

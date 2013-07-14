@@ -3,6 +3,7 @@ using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Threading;
 using System.Web.Mvc;
+using System.Web.Security;
 using WebMatrix.WebData;
 using Durandal2UserMaint.Models;
 
@@ -29,16 +30,54 @@ namespace Durandal2UserMaint.Filters
 
                 try
                 {
+                    bool createdDb = false;
                     using (var context = new UsersContext())
                     {
                         if (!context.Database.Exists())
                         {
                             // Create the SimpleMembership database without Entity Framework migration schema
                             ((IObjectContextAdapter)context).ObjectContext.CreateDatabase();
+                            createdDb = true;
                         }
                     }
 
                     WebSecurity.InitializeDatabaseConnection("DefaultConnection", "UserProfile", "UserId", "UserName", autoCreateTables: true);
+
+                    if (createdDb)
+                    {
+                        //if (!Roles.RoleExists("Administrator"))
+                        //{
+                        //    Roles.CreateRole("Administrator");
+                        //}
+                        //if (WebSecurity.UserExists("admin"))
+                        //{
+                        //    if (!Roles.IsUserInRole("admin", "Administrator"))
+                        //    {
+                        //        try
+                        //        {
+                        //            Roles.AddUserToRole("admin", "Administrator");
+                        //        }
+                        //        catch (Exception ex)
+                        //        {
+
+                        //        }
+                        //    }
+
+                        //}
+                        //else
+                        {
+                            try
+                            {
+                                Roles.CreateRole("Administrator");
+                                WebSecurity.CreateUserAndAccount("admin", "pass@word1");
+                                Roles.AddUserToRole("admin", "Administrator");
+                            }
+                            catch (Exception ex)
+                            {
+
+                            }
+                        }
+                    }
                 }
                 catch (Exception ex)
                 {
