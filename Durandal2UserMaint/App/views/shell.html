@@ -22,7 +22,7 @@
                     <!-- /ko -->
                 </ul>
             </div>
-            <div class="loader pull-right" data-bind="css: { active: router.isNavigating }">
+            <div class="loader pull-right" data-bind="css: { active: showBusy() }">
                 <i class="icon-spinner icon-2x icon-spin"></i>
             </div>
             <form class="navbar-search pull-right" data-bind="submit: search">

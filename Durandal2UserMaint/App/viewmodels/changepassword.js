@@ -1,5 +1,5 @@
-﻿define(['durandal/app', 'services/logger', 'services/dataservice', 'plugins/router', 'models/changePasswordModel', 'jquery'],
-    function (app, logger, dataservice, router, changePasswordModel, $) {
+﻿define(['durandal/app', 'services/logger', 'services/dataservice', 'plugins/router', 'models/changePasswordModel', 'jquery', 'services/navigating'],
+    function (app, logger, dataservice, router, changePasswordModel, $, navigating) {
         var title = "Change Password";
         var description = "Enter your Old Password as well as your New One.";
 
@@ -11,7 +11,7 @@
             return;
         };
 
-        var viewAttached = function () {
+        var attached = function () {
             var f = $("#myPasswordForm");
 
             f.validate({
@@ -55,7 +55,7 @@
             var f = $("#myPasswordForm");
 
             if (f.valid()) {
-                nav.busy(true);                
+                navigating.busy(true);
                 var promise = dataservice.changePassword(passwordModel);
 
                 return promise
@@ -64,11 +64,12 @@
                         passwordModel().oldPassword('');
                         passwordModel().newPassword('');
                         passwordModel().confirmPassword('');
-                        nav.busy(false);
+                        navigating.busy(false);
+                        router.navigateBack();
                     })
                     .fail(function (error) {
                         logger.logError("Error while changing your password: " + error.responseJSON.ExceptionMessage, null, "sendChangePassword", true);
-                        nav.busy(false);
+                        navigating.busy(false);
                     });
             } else {
                 //Handled by the invalidHandler
@@ -81,7 +82,7 @@
             activate: activate,
             passwordModel: passwordModel,
             sendChangePassword: sendChangePassword,
-            viewAttached: viewAttached
+            attached: attached
         };
 
         return vm;

@@ -1,4 +1,4 @@
-﻿define(function() {
+﻿define(['services/navigating'],function(navigating) {
     var ctor = function () {
         this.displayName = 'Welcome to the Durandal Starter Kit!';
         this.description = 'Durandal is a cross-device, cross-platform client framework written in JavaScript and designed to make Single Page Applications (SPAs) easy to create and maintain.';
@@ -15,6 +15,7 @@
             'Integrates with other libraries such as SammyJS & Bootstrap',
             'Make jQuery & Bootstrap widgets templatable and bindable (or build your own widgets).'
         ];
+        this.showBusy = navigating.showBusy;
     };
 
     //Note: This module exports a function. That means that you, the developer, can create multiple instances.

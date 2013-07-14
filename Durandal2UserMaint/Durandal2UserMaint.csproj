@@ -223,9 +223,13 @@
     <Content Include="App\services\global.min.js">
       <DependentUpon>global.js</DependentUpon>
     </Content>
+    <Content Include="App\services\navigating.js" />
     <Content Include="App\services\logger.js" />
     <Content Include="App\services\logger.min.js">
       <DependentUpon>logger.js</DependentUpon>
+    </Content>
+    <Content Include="App\services\navigating.min.js">
+      <DependentUpon>navigating.js</DependentUpon>
     </Content>
     <Content Include="App\viewmodels\changepassword.js" />
     <Content Include="App\viewmodels\changepassword.min.js">
@@ -371,6 +375,9 @@
     </Content>
     <Content Include="App\viewmodels\welcome.min.js.map">
       <DependentUpon>welcome.js</DependentUpon>
+    </Content>
+    <Content Include="App\services\navigating.min.js.map">
+      <DependentUpon>navigating.js</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-2.0.2.intellisense.js" />
     <Content Include="Scripts\almond-custom.js" />

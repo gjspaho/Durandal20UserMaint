@@ -41,6 +41,7 @@ namespace Durandal2UserMaint
                 .Include("~/Content/durandal.css")
                 .Include("~/Content/font-awesome.min.css")
                 .Include("~/Content/toastr.css")
+                .Include("~/Content/starterkit.css")
                 );
 
             bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(

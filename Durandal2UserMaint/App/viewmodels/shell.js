@@ -1,18 +1,24 @@
-﻿define(['durandal/system', 'plugins/router', 'durandal/app', 'services/logger', 'services/dataservice', 'knockout'],
-    function (systen, router, app, logger, dataservice, ko) {
+﻿define(['durandal/system', 'plugins/router', 'durandal/app', 'services/logger', 'services/dataservice', 'knockout', 'services/navigating'],
+    function (systen, router, app, logger, dataservice, ko, navigating) {
 
-        var activate = function () {            
+        var activate = function () {
 
+            navigating.busy(true);
             var promise = dataservice.getUserRole();
             return promise.then(function () {
                 logger.log("Portal activated", null, null, true);
                 router.map(buildRouteArray()).buildNavigationModel();
+                navigating.busy(false);
                 return router.activate();                
             }).fail(function (error) {
                 logger.logError("Cannot load portal.<br/>" + error.responseJSON.ExceptionMessage, "Cannot load portal", null, true);
+                navigating.busy(false);
+                return error;
             });
             
         };
+
+        
 
         var mainMenu = ko.computed(function () {
             return ko.utils.arrayFilter(router.navigationModel(), function (route) {
@@ -37,7 +43,8 @@
             router: router,
             search: search,
             mainMenu: mainMenu,
-            adminMenu: adminMenu
+            adminMenu: adminMenu,
+            showBusy: navigating.showBusy
         };
 
 
