@@ -1,5 +1,5 @@
-﻿define(['durandal/system', 'plugins/router', 'durandal/app', 'services/logger', 'services/dataservice', 'knockout', 'services/navigating'],
-    function (systen, router, app, logger, dataservice, ko, navigating) {
+﻿define(['durandal/system', 'plugins/router', 'durandal/app', 'services/logger', 'services/dataservice', 'knockout', 'services/navigating', 'services/scripts'],
+    function (systen, router, app, logger, dataservice, ko, navigating, scripts) {
 
         var activate = function () {
 
@@ -77,6 +77,16 @@
                 type: 'admin',
                 nav: true
             });
+
+            if (scripts.visibleBasedOnUserRole(['Administrator'])) {
+                routes.push({
+                    route: 'viewusers',
+                    title: 'View Users',
+                    moduleId: 'viewmodels/viewusers',
+                    type: 'admin',
+                    nav: true
+                });
+            }
 
             routes.push({
                 route: 'logoff',

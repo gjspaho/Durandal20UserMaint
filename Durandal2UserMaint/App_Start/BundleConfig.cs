@@ -15,6 +15,7 @@ namespace Durandal2UserMaint
                 .Include("~/scripts/knockout-{version}.js")
                 .Include("~/scripts/q.min.js")
                 .Include("~/scripts/toastr.js")
+                .Include("~/scripts/moment.js")
                 .Include("~/Scripts/jquery.unobtrusive*")
                 .Include("~/Scripts/jquery.validate*")
                 .Include("~/Scripts/bootstrap.js")

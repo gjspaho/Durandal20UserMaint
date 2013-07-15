@@ -204,6 +204,16 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\Durandal2UserMaintContext.cs" />
+    <Compile Include="Models\Mapping\UserProfileMap.cs" />
+    <Compile Include="Models\Mapping\webpages_MembershipMap.cs" />
+    <Compile Include="Models\Mapping\webpages_OAuthMembershipMap.cs" />
+    <Compile Include="Models\Mapping\webpages_RolesMap.cs" />
+    <Compile Include="Models\UserGridModel.cs" />
+    <Compile Include="Models\UserProfile.cs" />
+    <Compile Include="Models\webpages_Membership.cs" />
+    <Compile Include="Models\webpages_OAuthMembership.cs" />
+    <Compile Include="Models\webpages_Roles.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -215,6 +225,10 @@
     <Content Include="App\models\changePasswordModel.min.js">
       <DependentUpon>changePasswordModel.js</DependentUpon>
     </Content>
+    <Content Include="App\models\editUserModel.js" />
+    <Content Include="App\models\editUserModel.min.js">
+      <DependentUpon>editUserModel.js</DependentUpon>
+    </Content>
     <Content Include="App\services\dataservice.js" />
     <Content Include="App\services\dataservice.min.js">
       <DependentUpon>dataservice.js</DependentUpon>
@@ -223,6 +237,7 @@
     <Content Include="App\services\global.min.js">
       <DependentUpon>global.js</DependentUpon>
     </Content>
+    <Content Include="App\services\kobindings.js" />
     <Content Include="App\services\navigating.js" />
     <Content Include="App\services\logger.js" />
     <Content Include="App\services\logger.min.js">
@@ -231,6 +246,7 @@
     <Content Include="App\services\navigating.min.js">
       <DependentUpon>navigating.js</DependentUpon>
     </Content>
+    <Content Include="App\services\scripts.js" />
     <Content Include="App\viewmodels\changepassword.js" />
     <Content Include="App\viewmodels\changepassword.min.js">
       <DependentUpon>changepassword.js</DependentUpon>
@@ -247,15 +263,21 @@
     <Content Include="App\viewmodels\shell.min.js">
       <DependentUpon>shell.js</DependentUpon>
     </Content>
+    <Content Include="App\viewmodels\viewusers.js" />
+    <Content Include="App\viewmodels\viewusers.min.js">
+      <DependentUpon>viewusers.js</DependentUpon>
+    </Content>
     <Content Include="App\viewmodels\welcome.js" />
     <Content Include="App\viewmodels\welcome.min.js">
       <DependentUpon>welcome.js</DependentUpon>
     </Content>
     <Content Include="App\views\changepassword.html" />
     <Content Include="App\views\detail.html" />
+    <Content Include="App\views\edituser.html" />
     <Content Include="App\views\flickr.html" />
     <Content Include="App\views\logoff.html" />
     <Content Include="App\views\shell.html" />
+    <Content Include="App\views\viewusers.html" />
     <Content Include="App\views\welcome.html" />
     <Content Include="Content\bootstrap-responsive.css" />
     <Content Include="Content\bootstrap-responsive.min.css" />
@@ -379,6 +401,12 @@
     <Content Include="App\services\navigating.min.js.map">
       <DependentUpon>navigating.js</DependentUpon>
     </Content>
+    <Content Include="App\models\editUserModel.min.js.map">
+      <DependentUpon>editUserModel.js</DependentUpon>
+    </Content>
+    <Content Include="App\viewmodels\viewusers.min.js.map">
+      <DependentUpon>viewusers.js</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-2.0.2.intellisense.js" />
     <Content Include="Scripts\almond-custom.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -414,6 +442,8 @@
     <Content Include="Scripts\knockout-2.3.0.debug.js" />
     <Content Include="Scripts\knockout-2.3.0.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\moment.js" />
+    <Content Include="Scripts\moment.min.js" />
     <Content Include="Scripts\q.js" />
     <Content Include="Scripts\q.min.js" />
     <Content Include="Scripts\r.js" />

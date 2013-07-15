@@ -26,12 +26,12 @@ namespace Durandal2UserMaint.Filters
         {
             public SimpleMembershipInitializer()
             {
-                Database.SetInitializer<UsersContext>(null);
+                Database.SetInitializer<Durandal2UserMaintContext>(null);
 
                 try
                 {
                     bool createdDb = false;
-                    using (var context = new UsersContext())
+                    using (var context = new Durandal2UserMaintContext())
                     {
                         if (!context.Database.Exists())
                         {
@@ -41,41 +41,41 @@ namespace Durandal2UserMaint.Filters
                         }
                     }
 
-                    WebSecurity.InitializeDatabaseConnection("DefaultConnection", "UserProfile", "UserId", "UserName", autoCreateTables: true);
+                    WebSecurity.InitializeDatabaseConnection("DefaultConnection", "UserProfile", "UserId", "UserName", autoCreateTables: true);                    
 
                     if (createdDb)
                     {
-                        //if (!Roles.RoleExists("Administrator"))
-                        //{
-                        //    Roles.CreateRole("Administrator");
-                        //}
-                        //if (WebSecurity.UserExists("admin"))
-                        //{
-                        //    if (!Roles.IsUserInRole("admin", "Administrator"))
-                        //    {
-                        //        try
-                        //        {
-                        //            Roles.AddUserToRole("admin", "Administrator");
-                        //        }
-                        //        catch (Exception ex)
-                        //        {
-
-                        //        }
-                        //    }
-
-                        //}
-                        //else
+                        try
                         {
-                            try
-                            {
-                                Roles.CreateRole("Administrator");
-                                WebSecurity.CreateUserAndAccount("admin", "pass@word1");
-                                Roles.AddUserToRole("admin", "Administrator");
-                            }
-                            catch (Exception ex)
-                            {
+                            Roles.CreateRole("Administrator");
+                            WebSecurity.CreateUserAndAccount("admin", "pass@word1", new {IsActive = true});
+                            Roles.AddUserToRole("admin", "Administrator");
+                        }
+                        catch (Exception ex)
+                        {
 
+                        }
+                    }
+                    else
+                    {
+                        if (!Roles.RoleExists("Administrator"))
+                        {
+                            Roles.CreateRole("Administrator");
+                        }
+                        if (WebSecurity.UserExists("admin"))
+                        {
+                            if (!Roles.IsUserInRole("admin", "Administrator"))
+                            {
+                                try
+                                {
+                                    Roles.AddUserToRole("admin", "Administrator");
+                                }
+                                catch (Exception ex)
+                                {
+
+                                }
                             }
+
                         }
                     }
                 }

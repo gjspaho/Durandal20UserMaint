@@ -7,7 +7,9 @@
         'knockout': '../Scripts/knockout-2.3.0',
         'bootstrap': '../Scripts/bootstrap',
         'jquery': '../Scripts/jquery-2.0.2',
-        'toastr': '../Scripts/toastr'
+        'toastr': '../Scripts/toastr',
+        'moment': '../Scripts/moment',
+        'Q': '../Scripts/q'
     },
     shim: {
         'bootstrap': {
@@ -20,7 +22,7 @@
 define('jquery', [], function() { return jQuery; });
 define('knockout', [], function () { return ko; });
 
-define(['durandal/system', 'durandal/app', 'durandal/viewLocator', 'toastr'], function(system, app, viewLocator, toastr) {
+define(['durandal/system', 'durandal/app', 'durandal/viewLocator', 'toastr', 'services/kobindings'], function(system, app, viewLocator, toastr, kobindings) {
     //>>excludeStart("build", true);
     system.debug(true);
     //>>excludeEnd("build");

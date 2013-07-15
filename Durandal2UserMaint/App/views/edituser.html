@@ -1,0 +1,37 @@
+﻿<div class="messageBox autoclose">
+    <div class="modal-header">
+        <h3 class="page-title" data-bind="text: title"></h3>
+    </div>
+    <div class="modal-body">
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span12">
+                    <form id="formUpdateUser" class="form-horizontal">                        
+                        <div class="control-group">
+                            <label class="control-label">User Name</label>
+                            <div class="controls">
+                                <span data-bind="text: userName"></span>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Email</label>
+                            <div class="controls">
+                                <input id="userEmail" name="userEmail" data-bind="value: userEmail"/>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Active</label>
+                            <div class="controls">
+                                <input type="checkbox" data-bind="checked: isActive"/>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" data-bind="click: updateUser">Update User</button>
+        <button class="btn btn-primary" data-bind="click: closeModal">Close</button>
+    </div>
+</div>

@@ -35,13 +35,22 @@ namespace Durandal2UserMaint.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Login(LoginModel model, string returnUrl)
         {
-            if (ModelState.IsValid && WebSecurity.Login(model.UserName, model.Password, persistCookie: model.RememberMe))
+            if (ModelState.IsValid)
             {
-                return RedirectToLocal(returnUrl);
+                var repo = new Durandal2UserMaintContext();
+
+                var user = repo.UserProfiles.FirstOrDefault(x => x.UserName == model.UserName && x.IsActive);
+                if (user != null)
+                {
+                    if (WebSecurity.Login(model.UserName, model.Password, persistCookie: model.RememberMe))
+                    {
+                        return RedirectToLocal(returnUrl);
+                    }
+                }
             }
 
             // If we got this far, something failed, redisplay form
-            ModelState.AddModelError("", "The user name or password provided is incorrect.");
+            ModelState.AddModelError("", "The user name or password provided is incorrect, or the user is not active.");
             return View(model);
         }
 
@@ -52,7 +61,7 @@ namespace Durandal2UserMaint.Controllers
         //[ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
-            WebSecurity.Logout();
+            WebSecurity.Logout();            
 
             return RedirectToAction("Index", "durandal");
         }

@@ -3,7 +3,8 @@
 
         var dataservice = {            
             getUserRole: getUserRole,
-            changePassword: changePassword,            
+            changePassword: changePassword,
+            getUserList: getUserList
         };
 
         return dataservice;
@@ -20,5 +21,15 @@
             return promise.then(function (data) {
                 global.userRoles(data);
             });
-        }       
+        }
+
+        function getUserList(observableList) {
+            var promise = http.get('/api/additional/ListUsers');
+            
+            return promise.then(function(data) {
+                observableList(data);
+            }).fail(function(error) {
+                logger.logError("Error while loading users: " + error.responseJSON.ExceptionMessage, null, "sendChangePassword", true);
+            })
+        }
     });
