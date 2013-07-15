@@ -70,5 +70,63 @@ namespace Durandal2UserMaint.Controllers
                         Email = u.UserEmail
                     });
         }
+
+        [ActionName("UpdateUser")]
+        [HttpPost]
+        [Authorize(Roles = "Administrator")]
+        public void UpdateUserInfo(UserProfile userProfile)
+        {
+            if (ModelState.IsValid)
+            {
+                var repo = new Durandal2UserMaintContext();
+
+                var user = (from v in repo.UserProfiles select v).FirstOrDefault(x => x.UserName == userProfile.UserName);
+                if (user != null)
+                {
+                    user.UserEmail = userProfile.UserEmail;
+                    user.IsActive = userProfile.IsActive;
+                    repo.SaveChanges();
+                }
+                else
+                {
+                    throw new Exception("User to update not found");
+                }
+            }
+            else
+            {
+                string errors = string.Empty;
+                foreach (var modelState in ModelState.Values)
+                {
+                    foreach (var error in modelState.Errors)
+                    {
+                        errors += error.ErrorMessage + Environment.NewLine;
+                    }
+                }
+                throw new Exception(errors);
+            }
+        }
+
+        [ActionName("AddUser")]
+        [HttpPost]
+        [Authorize(Roles = "Administrator")]
+        public void AddUserInfo(UserProfile userProfile)
+        {
+            if (ModelState.IsValid)
+            {
+                throw new NotImplementedException("Add User is not Implemented in the server yet");
+            }
+            else
+            {
+                string errors = string.Empty;
+                foreach (var modelState in ModelState.Values)
+                {
+                    foreach (var error in modelState.Errors)
+                    {
+                        errors += error.ErrorMessage + Environment.NewLine;
+                    }
+                }
+                throw new Exception(errors);
+            }
+        }
     }
 }

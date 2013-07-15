@@ -3,7 +3,8 @@
         this.userName = ko.observable(userName);
         this.userEmail = ko.observable(userEmail);
         this.isActive = ko.observable(isActive);
-        this.title = "Edit User";        
+        this.title = "Edit User";
+        
     }
 
     edirUserModel.prototype.closeModal = function() {
@@ -34,11 +35,17 @@
             rules: {
                 userEmail: {                    
                     email: true
+                },
+                userName: {
+                    required: true
                 }
             },
             messages: {
                 userEmail: {                    
                     email: "Please enter a valid email"
+                },
+                userName: {
+                    required: "Please enter an user name"
                 }
             }
         });

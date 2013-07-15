@@ -238,6 +238,9 @@
       <DependentUpon>global.js</DependentUpon>
     </Content>
     <Content Include="App\services\kobindings.js" />
+    <Content Include="App\services\kobindings.min.js">
+      <DependentUpon>kobindings.js</DependentUpon>
+    </Content>
     <Content Include="App\services\navigating.js" />
     <Content Include="App\services\logger.js" />
     <Content Include="App\services\logger.min.js">
@@ -247,6 +250,9 @@
       <DependentUpon>navigating.js</DependentUpon>
     </Content>
     <Content Include="App\services\scripts.js" />
+    <Content Include="App\services\scripts.min.js">
+      <DependentUpon>scripts.js</DependentUpon>
+    </Content>
     <Content Include="App\viewmodels\changepassword.js" />
     <Content Include="App\viewmodels\changepassword.min.js">
       <DependentUpon>changepassword.js</DependentUpon>
@@ -271,6 +277,7 @@
     <Content Include="App\viewmodels\welcome.min.js">
       <DependentUpon>welcome.js</DependentUpon>
     </Content>
+    <Content Include="App\views\adduser.html" />
     <Content Include="App\views\changepassword.html" />
     <Content Include="App\views\detail.html" />
     <Content Include="App\views\edituser.html" />
@@ -406,6 +413,12 @@
     </Content>
     <Content Include="App\viewmodels\viewusers.min.js.map">
       <DependentUpon>viewusers.js</DependentUpon>
+    </Content>
+    <Content Include="App\services\kobindings.min.js.map">
+      <DependentUpon>kobindings.js</DependentUpon>
+    </Content>
+    <Content Include="App\services\scripts.min.js.map">
+      <DependentUpon>scripts.js</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-2.0.2.intellisense.js" />
     <Content Include="Scripts\almond-custom.js" />

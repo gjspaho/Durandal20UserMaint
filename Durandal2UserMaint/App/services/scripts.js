@@ -1,5 +1,5 @@
 ﻿define(['services/global'],
-    function (global) {        
+    function (global) {
         var visibleBasedOnUserRole = function (roles) {
             var allowed = false;
 
@@ -16,10 +16,24 @@
             }
             return allowed;
         };
+        
+        var jsonMessage = function (error) {
+            var message = "Unknown";
+
+            if (error.responseJSON.ExceptionMessage) {
+                message = error.responseJSON.ExceptionMessage;
+            } else if (error.responseJSON.MessageDetail) {
+                message = error.responseJSON.MessageDetail
+            }
+
+
+            return message;
+        }
 
         var scripts = {
-            visibleBasedOnUserRole: visibleBasedOnUserRole
+            visibleBasedOnUserRole: visibleBasedOnUserRole,
+            jsonMessage: jsonMessage
         };
 
         return scripts;
-    })
+    });

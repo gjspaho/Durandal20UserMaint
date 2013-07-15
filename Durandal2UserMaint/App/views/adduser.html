@@ -10,7 +10,7 @@
                         <div class="control-group">
                             <label class="control-label">User Name</label>
                             <div class="controls">
-                                <span data-bind="text: userName"></span>
+                                <input id="userName" name="userName" type="text" data-bind="value: userName"/>
                             </div>
                         </div>
                         <div class="control-group">
@@ -31,7 +31,7 @@
         </div>
     </div>
     <div class="modal-footer">
-        <button class="btn btn-primary" data-bind="click: updateUser">Update User</button>
+        <button class="btn btn-primary" data-bind="click: updateUser">Add User</button>
         <button class="btn btn-primary" data-bind="click: closeModal">Close</button>
     </div>
 </div>

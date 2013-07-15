@@ -4,7 +4,9 @@
         var dataservice = {            
             getUserRole: getUserRole,
             changePassword: changePassword,
-            getUserList: getUserList
+            getUserList: getUserList,
+            updateUser: updateUser,
+            addUser: addUser
         };
 
         return dataservice;
@@ -31,5 +33,12 @@
             }).fail(function(error) {
                 logger.logError("Error while loading users: " + error.responseJSON.ExceptionMessage, null, "sendChangePassword", true);
             })
+        }
+
+        function updateUser(userProfile) {
+            return http.post('/api/additional/UpdateUser', userProfile);                       
+        }
+        function addUser(userProfile) {
+            return http.post('/api/additional/AddUser', userProfile);
         }
     });
