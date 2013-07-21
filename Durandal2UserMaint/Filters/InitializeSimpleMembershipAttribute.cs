@@ -41,7 +41,21 @@ namespace Durandal2UserMaint.Filters
                         }
                     }
 
-                    WebSecurity.InitializeDatabaseConnection("DefaultConnection", "UserProfile", "UserId", "UserName", autoCreateTables: true);                    
+                    try
+                    {
+                        WebSecurity.InitializeDatabaseConnection("DefaultConnection", "UserProfile", "UserId",
+                            "UserName", autoCreateTables: true);
+                    }
+                    catch (InvalidOperationException e)
+                    {
+                        //do nothing. Most likely the initialization happened in the global.aspx
+                    }
+                    catch (Exception)
+                    {
+                        
+                        throw;
+                    }
+                                        
 
                     if (createdDb)
                     {

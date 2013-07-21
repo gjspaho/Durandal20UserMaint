@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
-using System.Globalization;
-using System.Web.Security;
 
 namespace Durandal2UserMaint.Models
 {
@@ -93,5 +88,25 @@ namespace Durandal2UserMaint.Models
         public string Provider { get; set; }
         public string ProviderDisplayName { get; set; }
         public string ProviderUserId { get; set; }
+    }
+
+    public class AdminAddUser
+    {
+        [Required]
+        public string UserName { get; set; }
+        public string UserEmail { get; set; }
+        public bool IsActive { get; set; }
+        [Required]
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        public string Password { get; set; }
+    }
+
+    public class ResetPassword
+    {
+        [Required]
+        public string UserName { get; set; }
+        [Required]
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        public string Password { get; set; }
     }
 }

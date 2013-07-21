@@ -1,5 +1,5 @@
-﻿define(['durandal/app', 'services/navigating', 'knockout', 'services/dataservice', 'jquery', 'services/logger', 'models/editUserModel', 'services/scripts'],
-    function (app, navigating, ko, dataservice, $, logger, editUserModel, scripts) {
+﻿define(['durandal/app', 'services/navigating', 'knockout', 'services/dataservice', 'jquery', 'services/logger', 'models/editUserModel', 'models/addUserModel', 'models/resetPasswordModel', 'services/scripts'],
+    function (app, navigating, ko, dataservice, $, logger, editUserModel, addUserModel, resetPasswordModel, scripts) {
         var title = "View Site Users";
         var description = "Here is a list of the users on the site.";
         var listOfUsers = ko.observableArray([]);
@@ -21,6 +21,10 @@
                 var line = ko.dataFor(this);
                 editUser(line);
             });
+            $(rootSelector).on('click', '.resetPassword', function () {
+                var line = ko.dataFor(this);
+                resetPassword(line);
+            });
         };
 
         var viewRoles = function(user) {
@@ -33,27 +37,45 @@
             app.showDialog(diag).then(function (diagResult) {
                 if (diagResult === 'update') {
                     var promise = dataservice.updateUser(diag);
-                    return promise.then(function() {
-                        logger.log("User hase been updated", null, null, "viewusers", true);
-                        return refreshUsers();
+                    promise.then(function() {
+                        logger.log("User has been updated", null, null, "viewusers", true);
+                        refreshUsers();
                     }).fail(function(error) {
-                        logger.logError("We encountered an error updating user: " + scripts.jsonMessage(error), null, "viewusers", true);
+                        logger.logError("We encountered an error updating user: " + scripts.jsonMessage(error), null, "viewusers", true);                        
                     });
                 } else {
                     logger.logWarning("The user was NOT updated", null, "viewusers", true);                    
                 }
             });
+        };        
+
+        var resetPassword = function (user) {
+            var diag = new resetPasswordModel(user.UserName);
+            diag.viewUrl = 'views/resetpassword';
+            app.showDialog(diag).then(function(diagResult) {
+                if (diagResult === 'update') {
+                    var promise = dataservice.resetPassword(diag);
+                    promise.then(function() {
+                        logger.log("Password has been reset", null, null, "viewusers", true);
+                        refreshUsers();
+                    }).fail(function(error) {
+                        logger.logError("We encountered an error updating user's password: " + scripts.jsonMessage(error), null, "viewusers", true);
+                    });
+                } else {
+                    logger.logWarning("The user was NOT udpated", null, "viewusers", true);
+                }
+            });
         };
         
-        var addUser = function() {
-            var diag = new editUserModel("", "", true);
+        var addUser = function () {
+            var diag = new addUserModel("", "", true, "");
             diag.viewUrl = 'views/adduser';
             app.showDialog(diag).then(function (diagResult) {
                 if (diagResult === 'update') {
                     var promise = dataservice.addUser(diag);
-                    return promise.then(function () {
+                    promise.then(function () {
                         logger.log("User hase been added", null, null, "viewusers", true);
-                        return refreshUsers();
+                        refreshUsers();
                     }).fail(function (error) {
                         logger.logError("We encountered an error updating user: " + scripts.jsonMessage(error), null, "viewusers", true);
                     });
@@ -61,7 +83,7 @@
                     logger.logWarning("The user was NOT added", null, "viewusers", true);
                 }
             });
-        }
+        };
         
 
         var vm = {
@@ -81,6 +103,6 @@
 
             return promise.then(function () {
                 navigating.busy(false);
-            });
+            }).fail(function () { navigating.busy(false); });
         }
     });

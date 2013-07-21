@@ -8,30 +8,23 @@
         </div>
         <div class="row-fluid">
             <div class="span12">
-                <button class="btn" data-bind="click: addUser"><i class="icon-user"></i>&nbsp;Add User</button>
+                <button class="btn" data-bind="click: addRole"><i class="icon-user"></i>&nbsp;Add Role</button>
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Created On</th>
-                            <th>Active</th>
+                            <th>Role</th>
                             <th>&nbsp;</th>
                         </tr>
                     </thead>
-                    <tbody data-bind="foreach: listOfUsers">
+                    <tbody data-bind="foreach: listOfRoles">
                         <tr>
-                            <td><span data-bind="text: UserName"></span></td>
-                            <td><span data-bind="text: Email"></span></td>
-                            <td><span data-bind="dateFormat: CreateDate"></span></td>
-                            <td><span data-bind="yesno: IsActive"></span></td>
+                            <td><span data-bind="text: RoleName"></span></td>                            
                             <td>
                                 <div class="btn-group pull-right">
                                     <button class="btn dropdown-toggle" data-toggle="dropdown">Action&nbsp;<span class="caret"></span></button>
                                     <ul class="dropdown-menu">
-                                        <li><a style="cursor: pointer;" class="viewRoles">View Roles</a></li>
-                                        <li><a style="cursor: pointer;" class="editUser">Edit User</a></li>
-                                        <li><a style="cursor: pointer;" class="resetPassword">Reset Password</a></li>
+                                        <li><a style="cursor: pointer;" class="editRole">Edit Role</a></li>
+                                        <li><a style="cursor: pointer;" class="viewUsers">View Users</a></li>                                                                                
                                     </ul>
                                 </div>
                             </td>
@@ -41,6 +34,4 @@
             </div>
         </div>
     </div>
-
-
 </section>

@@ -88,6 +88,26 @@
                 });
             }
 
+            //if (scripts.visibleBasedOnUserRole(['Administrator'])) {
+            //    routes.push({
+            //        route: 'test',
+            //        title: 'Test',
+            //        moduleId: 'viewmodels/test',
+            //        type: 'admin',
+            //        nav: true
+            //    });
+            //}
+            
+            if (scripts.visibleBasedOnUserRole(['Administrator'])) {
+                routes.push({
+                    route: 'viewroles',
+                    title: 'View Roles',
+                    moduleId: 'viewmodels/viewroles',
+                    type: 'admin',
+                    nav: true
+                });
+            }
+
             routes.push({
                 route: 'logoff',
                 title: 'Log Off',

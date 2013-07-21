@@ -1,0 +1,28 @@
+﻿<div class="messageBox autoclose">
+    <div class="modal-header">
+        <h3 class="page-title" data-bind="text: title"></h3>
+    </div>
+    <div class="modal-body">
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span12">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>User Name</th>
+                            </tr>
+                        </thead>
+                        <tbody data-bind="foreach: listOfUsers">
+                            <tr>
+                                <td><span data-bind="text: UserName"></span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" data-bind="click: closeModal">Close</button>
+    </div>
+</div>

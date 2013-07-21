@@ -209,8 +209,10 @@
     <Compile Include="Models\Mapping\webpages_MembershipMap.cs" />
     <Compile Include="Models\Mapping\webpages_OAuthMembershipMap.cs" />
     <Compile Include="Models\Mapping\webpages_RolesMap.cs" />
+    <Compile Include="Models\RoleGridModel.cs" />
     <Compile Include="Models\UserGridModel.cs" />
     <Compile Include="Models\UserProfile.cs" />
+    <Compile Include="Models\UsersInRoleGridModel.cs" />
     <Compile Include="Models\webpages_Membership.cs" />
     <Compile Include="Models\webpages_OAuthMembership.cs" />
     <Compile Include="Models\webpages_Roles.cs" />
@@ -221,13 +223,29 @@
     <Content Include="App\main.min.js">
       <DependentUpon>main.js</DependentUpon>
     </Content>
+    <Content Include="App\models\addUserModel.js" />
+    <Content Include="App\models\addUserModel.min.js">
+      <DependentUpon>addUserModel.js</DependentUpon>
+    </Content>
     <Content Include="App\models\changePasswordModel.js" />
     <Content Include="App\models\changePasswordModel.min.js">
       <DependentUpon>changePasswordModel.js</DependentUpon>
     </Content>
+    <Content Include="App\models\editAddRoleModel.js" />
+    <Content Include="App\models\editAddRoleModel.min.js">
+      <DependentUpon>editAddRoleModel.js</DependentUpon>
+    </Content>
     <Content Include="App\models\editUserModel.js" />
     <Content Include="App\models\editUserModel.min.js">
       <DependentUpon>editUserModel.js</DependentUpon>
+    </Content>
+    <Content Include="App\models\listUsersInRolesModel.js" />
+    <Content Include="App\models\listUsersInRolesModel.min.js">
+      <DependentUpon>listUsersInRolesModel.js</DependentUpon>
+    </Content>
+    <Content Include="App\models\resetPasswordModel.js" />
+    <Content Include="App\models\resetPasswordModel.min.js">
+      <DependentUpon>resetPasswordModel.js</DependentUpon>
     </Content>
     <Content Include="App\services\dataservice.js" />
     <Content Include="App\services\dataservice.min.js">
@@ -269,6 +287,11 @@
     <Content Include="App\viewmodels\shell.min.js">
       <DependentUpon>shell.js</DependentUpon>
     </Content>
+    <Content Include="App\viewmodels\test.js" />
+    <Content Include="App\viewmodels\viewroles.js" />
+    <Content Include="App\viewmodels\viewroles.min.js">
+      <DependentUpon>viewroles.js</DependentUpon>
+    </Content>
     <Content Include="App\viewmodels\viewusers.js" />
     <Content Include="App\viewmodels\viewusers.min.js">
       <DependentUpon>viewusers.js</DependentUpon>
@@ -277,13 +300,18 @@
     <Content Include="App\viewmodels\welcome.min.js">
       <DependentUpon>welcome.js</DependentUpon>
     </Content>
+    <Content Include="App\views\addeditrole.html" />
     <Content Include="App\views\adduser.html" />
     <Content Include="App\views\changepassword.html" />
     <Content Include="App\views\detail.html" />
     <Content Include="App\views\edituser.html" />
     <Content Include="App\views\flickr.html" />
     <Content Include="App\views\logoff.html" />
+    <Content Include="App\views\resetpassword.html" />
     <Content Include="App\views\shell.html" />
+    <Content Include="App\views\test.html" />
+    <Content Include="App\views\usersinrole.html" />
+    <Content Include="App\views\viewroles.html" />
     <Content Include="App\views\viewusers.html" />
     <Content Include="App\views\welcome.html" />
     <Content Include="Content\bootstrap-responsive.css" />
@@ -419,6 +447,21 @@
     </Content>
     <Content Include="App\services\scripts.min.js.map">
       <DependentUpon>scripts.js</DependentUpon>
+    </Content>
+    <Content Include="App\models\addUserModel.min.js.map">
+      <DependentUpon>addUserModel.js</DependentUpon>
+    </Content>
+    <Content Include="App\models\resetPasswordModel.min.js.map">
+      <DependentUpon>resetPasswordModel.js</DependentUpon>
+    </Content>
+    <Content Include="App\viewmodels\viewroles.min.js.map">
+      <DependentUpon>viewroles.js</DependentUpon>
+    </Content>
+    <Content Include="App\models\editAddRoleModel.min.js.map">
+      <DependentUpon>editAddRoleModel.js</DependentUpon>
+    </Content>
+    <Content Include="App\models\listUsersInRolesModel.min.js.map">
+      <DependentUpon>listUsersInRolesModel.js</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-2.0.2.intellisense.js" />
     <Content Include="Scripts\almond-custom.js" />
