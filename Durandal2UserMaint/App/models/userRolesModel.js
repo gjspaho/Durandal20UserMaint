@@ -18,7 +18,7 @@
             navigating.showBusy(true);
 
             var promise = Q.all([dataservice.getRoleList(this.listOfRoles),
-                dataservice.getUsersInRole(this.listOfUserRoles, this.editRole.userName())]);
+                dataservice.getUserRoles(this.listOfUserRoles, this.editRole.userName())]);
 
             return promise.then(function () {
                 navigating.busy(false);
@@ -75,7 +75,7 @@
             navigating.showBusy(true);
 
             var promise = Q.all([dataservice.getRoleList(view.listOfRoles),
-                dataservice.getUsersInRole(view.listOfUserRoles, view.editRole.userName())]);
+                dataservice.getUserRoles(view.listOfUserRoles, view.editRole.userName())]);
 
             promise.then(function () {
                 navigating.busy(false);

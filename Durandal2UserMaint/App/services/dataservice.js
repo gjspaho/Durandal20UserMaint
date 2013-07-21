@@ -44,7 +44,7 @@
             })
         }
         
-        function getUsersInRole(observableList, user) {
+        function getUserRoles(observableList, user) {
             var promise = http.get('/api/additional/ListUserRoles', 'user=' + user);
 
             return promise.then(function (data) {
@@ -54,7 +54,7 @@
             })
         }
 
-        function getUserRoles(observableList, role) {
+        function getUsersInRole(observableList, role) {
             var promise = http.get('/api/additional/ListUsersInRole', 'role=' + role);
 
             return promise.then(function (data) {
