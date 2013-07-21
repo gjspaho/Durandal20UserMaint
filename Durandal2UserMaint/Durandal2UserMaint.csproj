@@ -212,6 +212,7 @@
     <Compile Include="Models\RoleGridModel.cs" />
     <Compile Include="Models\UserGridModel.cs" />
     <Compile Include="Models\UserProfile.cs" />
+    <Compile Include="Models\UserRoleEditModel.cs" />
     <Compile Include="Models\UsersInRoleGridModel.cs" />
     <Compile Include="Models\webpages_Membership.cs" />
     <Compile Include="Models\webpages_OAuthMembership.cs" />
@@ -246,6 +247,10 @@
     <Content Include="App\models\resetPasswordModel.js" />
     <Content Include="App\models\resetPasswordModel.min.js">
       <DependentUpon>resetPasswordModel.js</DependentUpon>
+    </Content>
+    <Content Include="App\models\userRolesModel.js" />
+    <Content Include="App\models\userRolesModel.min.js">
+      <DependentUpon>userRolesModel.js</DependentUpon>
     </Content>
     <Content Include="App\services\dataservice.js" />
     <Content Include="App\services\dataservice.min.js">
@@ -287,7 +292,6 @@
     <Content Include="App\viewmodels\shell.min.js">
       <DependentUpon>shell.js</DependentUpon>
     </Content>
-    <Content Include="App\viewmodels\test.js" />
     <Content Include="App\viewmodels\viewroles.js" />
     <Content Include="App\viewmodels\viewroles.min.js">
       <DependentUpon>viewroles.js</DependentUpon>
@@ -309,7 +313,7 @@
     <Content Include="App\views\logoff.html" />
     <Content Include="App\views\resetpassword.html" />
     <Content Include="App\views\shell.html" />
-    <Content Include="App\views\test.html" />
+    <Content Include="App\views\userroles.html" />
     <Content Include="App\views\usersinrole.html" />
     <Content Include="App\views\viewroles.html" />
     <Content Include="App\views\viewusers.html" />
@@ -462,6 +466,9 @@
     </Content>
     <Content Include="App\models\listUsersInRolesModel.min.js.map">
       <DependentUpon>listUsersInRolesModel.js</DependentUpon>
+    </Content>
+    <Content Include="App\models\userRolesModel.min.js.map">
+      <DependentUpon>userRolesModel.js</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-2.0.2.intellisense.js" />
     <Content Include="Scripts\almond-custom.js" />

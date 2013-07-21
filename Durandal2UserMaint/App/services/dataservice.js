@@ -12,7 +12,10 @@
             addRole: addRole,
             updateRole: updateRole,
             deleteRole: deleteRole,
-            getUsersInRole: getUsersInRole
+            getUsersInRole: getUsersInRole,
+            getUserRoles: getUserRoles,
+            addRoleToUser: addRoleToUser,
+            deleteRoleFromUser: deleteRoleFromUser
         };
 
         return dataservice;
@@ -41,7 +44,17 @@
             })
         }
         
-        function getUsersInRole(observableList, role) {
+        function getUsersInRole(observableList, user) {
+            var promise = http.get('/api/additional/ListUserRoles', 'user=' + user);
+
+            return promise.then(function (data) {
+                observableList(data);
+            }).fail(function (error) {
+                logger.logError("Error while loading roles for user: " + scripts.jsonMessage(error), null, "getUsersInRole", true);
+            })
+        }
+
+        function getUserRoles(observableList, role) {
             var promise = http.get('/api/additional/ListUsersInRole', 'role=' + role);
 
             return promise.then(function (data) {
@@ -81,5 +94,13 @@
         
         function deleteRole(role) {
             return http.post('/api/additional/DeleteRole', role);
+        }
+        
+        function addRoleToUser(userRole) {
+            return http.post('/api/additional/AddRoleToUser', userRole);
+        }
+        
+        function deleteRoleFromUser(userRole) {
+            return http.post('/api/additional/DeleteRoleFromUser', userRole);
         }
     });

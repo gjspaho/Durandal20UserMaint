@@ -1,5 +1,5 @@
-﻿define(['durandal/app', 'plugins/dialog', 'knockout', 'jquery', 'services/logger', 'services/dataservice', 'services/navigating', 'Q'],
-    function (app, dialog, ko, $, logger, dataservice, navigating, Q) {
+﻿define(['durandal/app', 'plugins/dialog', 'knockout', 'jquery', 'services/logger', 'services/dataservice', 'services/navigating'],
+    function (app, dialog, ko, $, logger, dataservice, navigating) {
         var listUsersInRolesModel = function (roleName) {
             this.roleName = ko.observable(roleName);
             this.title = "Users in '" + roleName + "' Role";

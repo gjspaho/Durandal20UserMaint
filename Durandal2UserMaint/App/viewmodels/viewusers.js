@@ -1,14 +1,16 @@
-﻿define(['durandal/app', 'services/navigating', 'knockout', 'services/dataservice', 'jquery', 'services/logger', 'models/editUserModel', 'models/addUserModel', 'models/resetPasswordModel', 'services/scripts'],
-    function (app, navigating, ko, dataservice, $, logger, editUserModel, addUserModel, resetPasswordModel, scripts) {
+﻿define(['durandal/app', 'services/navigating', 'knockout', 'services/dataservice', 'jquery', 'services/logger', 'models/editUserModel',
+    'models/addUserModel', 'models/resetPasswordModel', 'models/userRolesModel', 'services/scripts'],
+    function (app, navigating, ko, dataservice, $, logger, editUserModel,
+        addUserModel, resetPasswordModel, userRolesModel, scripts) {
         var title = "View Site Users";
         var description = "Here is a list of the users on the site.";
         var listOfUsers = ko.observableArray([]);
-        
+
         var activate = function () {
             return refreshUsers();
         };
 
-        var attached = function(view) {           
+        var attached = function (view) {
             bindAction(view);
         };
 
@@ -27,38 +29,42 @@
             });
         };
 
-        var viewRoles = function(user) {
-            app.showMessage("Not implemented yet", "Sorry");
+        var viewRoles = function (user) {
+            var diag = new userRolesModel(user.UserName);
+            diag.viewUrl = 'views/userroles';
+            app.showDialog(diag).then(function (diagResult) {
+                //Not sure we're doing anything here
+            });
         };
 
-        var editUser = function(user) {
+        var editUser = function (user) {
             var diag = new editUserModel(user.UserName, user.Email, user.IsActive);
             diag.viewUrl = 'views/edituser';
             app.showDialog(diag).then(function (diagResult) {
                 if (diagResult === 'update') {
                     var promise = dataservice.updateUser(diag);
-                    promise.then(function() {
+                    promise.then(function () {
                         logger.log("User has been updated", null, null, "viewusers", true);
                         refreshUsers();
-                    }).fail(function(error) {
-                        logger.logError("We encountered an error updating user: " + scripts.jsonMessage(error), null, "viewusers", true);                        
+                    }).fail(function (error) {
+                        logger.logError("We encountered an error updating user: " + scripts.jsonMessage(error), null, "viewusers", true);
                     });
                 } else {
-                    logger.logWarning("The user was NOT updated", null, "viewusers", true);                    
+                    logger.logWarning("The user was NOT updated", null, "viewusers", true);
                 }
             });
-        };        
+        };
 
         var resetPassword = function (user) {
             var diag = new resetPasswordModel(user.UserName);
             diag.viewUrl = 'views/resetpassword';
-            app.showDialog(diag).then(function(diagResult) {
+            app.showDialog(diag).then(function (diagResult) {
                 if (diagResult === 'update') {
                     var promise = dataservice.resetPassword(diag);
-                    promise.then(function() {
+                    promise.then(function () {
                         logger.log("Password has been reset", null, null, "viewusers", true);
                         refreshUsers();
-                    }).fail(function(error) {
+                    }).fail(function (error) {
                         logger.logError("We encountered an error updating user's password: " + scripts.jsonMessage(error), null, "viewusers", true);
                     });
                 } else {
@@ -66,7 +72,7 @@
                 }
             });
         };
-        
+
         var addUser = function () {
             var diag = new addUserModel("", "", true, "");
             diag.viewUrl = 'views/adduser';
@@ -84,7 +90,7 @@
                 }
             });
         };
-        
+
 
         var vm = {
             title: title,
@@ -96,7 +102,7 @@
         }
 
         return vm;
-        
+
         function refreshUsers() {
             navigating.busy(true);
             var promise = dataservice.getUserList(listOfUsers);
